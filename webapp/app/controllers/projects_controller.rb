@@ -4,4 +4,12 @@ class ProjectsController < ApplicationController
 
   def create
   end
+
+  def index
+    @apis = Api.all
+  end
+
+  def conf
+    
+  end
 end
