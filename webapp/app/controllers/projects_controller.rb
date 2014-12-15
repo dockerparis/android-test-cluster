@@ -1,3 +1,5 @@
+require 'open3'
+
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
@@ -13,8 +15,15 @@ class ProjectsController < ApplicationController
   end
 
   def create
-	@project = Project.new(project_params)
+	  @project = Project.new(project_params)
     if @project.save
+      Rails.logger.debug project_params.inspect
+      project_params[:api_ids].each do |id|
+        Rails.logger.debug Api.find(id).name
+        Open3.popen3("/script/emulator.sh", @project.name, @project.url, Api.find(id).name) do |stdin, stdout, stderr, wait_thr|
+          p stdout.read
+        end
+      end
       redirect_to @project
     else
       render "new"

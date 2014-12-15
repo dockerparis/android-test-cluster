@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -gt 0 ]; then
+  CMD=$2
+  PORT=5554
+  echo "Starting emulator[$PORT]..."
+  emulator-x86 -force-32bit -avd "$1" -no-skin -no-audio -no-window -port $PORT &
+  wait-for-emulator
+  $CMD
+else
+  echo "No command is specified"
+fi
