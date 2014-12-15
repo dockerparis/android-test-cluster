@@ -4,8 +4,13 @@ With Android Cluster for Testing you can  run Android Units Tests on any Android
 
 # Prerequisite
 
-Requires Docker. You can get it here https://get.docker.com/
+* Requires Docker. You can get it here `https://get.docker.com` :
 
+  ```sh
+  curl -sSL https://get.docker.com | sh -
+  ```
+* [Android SDK](http://developer.android.com/sdk/index.html#Other) (Need system images)
+* In `webapp/emulator.sh` you need to replace `/opt/android-sdk` with the path of your SDK
 
 # Installation
 
