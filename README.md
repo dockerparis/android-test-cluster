@@ -37,12 +37,13 @@ docker run -v $(readlink -f /var/run/docker.sock):$(readlink -f /var/run/docker.
 
 # Ideas of features to implement
 
-* Screenshots of tests
-* Auto mailing
 * Hardware configuration
+* Screenshots of tests
 * Account system (GitHub integration with public/private repo)
-* Live test with VNC/html5/websocket
 * [Swarm](https://github.com/docker/swarm) integration
+* Auto mailing
+* Android NDK support
+* Live test with VNC/html5/websocket
 * Better UI/UX
 * A better conception (REST API between Android VM and UI container)
 
