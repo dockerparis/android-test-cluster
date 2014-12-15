@@ -10,4 +10,9 @@
   <%= @project.url %>
 </p>
 
+<% Dir["**/reports/tests/index.html"].each do |x| %>
+<h3><%= x %></h3>
+<iframe src="/<%= x %>" height="800" width="100%" frameborder="0" />
+<% end %>
+
 <%= link_to 'Back', projects_path %>
