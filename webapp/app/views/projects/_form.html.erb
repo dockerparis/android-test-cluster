@@ -1,3 +1,22 @@
-<%= form_for @project, url: {action: "create"} do |f| %>
-  <%= f.text_field :name %>
+<%= form_for(@project) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+    <div class="field">
+
+            <% for api in Api.all %>
+            <div>
+                <%= check_box_tag "project[api_ids][]", api.id, @project.apis.include?(api) %>
+                <%= api.name + " (API " + api.version.to_s + ")" %>
+            </div>
+        <% end %>
+    </div>
+    <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

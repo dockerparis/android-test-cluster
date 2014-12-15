@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214002007) do
+ActiveRecord::Schema.define(version: 20141214230553) do
 
   create_table "apis", force: true do |t|
     t.text     "name"
     t.integer  "version"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "apis_projects", id: false, force: true do |t|
+    t.integer "project_id"
+    t.integer "api_id"
   end
 
   create_table "containers", force: true do |t|
@@ -41,16 +46,12 @@ ActiveRecord::Schema.define(version: 20141214002007) do
 
   create_table "projects", force: true do |t|
     t.text     "name"
+    t.text     "url"
     t.datetime "created_at"
     t.integer  "hardwares_id"
     t.datetime "updated_at"
   end
 
   add_index "projects", ["hardwares_id"], name: "index_projects_on_hardwares_id"
-
-  create_table "projects_and_apis", id: false, force: true do |t|
-    t.integer "projects_id"
-    t.integer "apis_id"
-  end
 
 end
